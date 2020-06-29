@@ -6,6 +6,10 @@ class Actor < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :filmography,
+             :through => :roles,
+             :source => :movie
+
   has_many   :directors,
              :through => :filmography,
              :source => :director
