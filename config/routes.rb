@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :roles
   devise_for :actors
   resources :actors
   devise_for :directors
