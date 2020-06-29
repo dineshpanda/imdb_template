@@ -10,9 +10,7 @@
   <ul class="list-group list-group-flush">
     <% @actor.roles.each do |role| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <a href="/roles/<%= role.id %>">
-          <%= role.character_name %>
-        </a>
+        <%= link_to role.character_name, role_path(role) %>
 
       </li>
     <% end %>

@@ -10,9 +10,7 @@
   <ul class="list-group list-group-flush">
     <% @director.filmography.each do |movie| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <a href="/movies/<%= movie.id %>">
-          <%= movie.title %>
-        </a>
+        <%= link_to movie.title, movie_path(movie) %>
 
       </li>
     <% end %>
