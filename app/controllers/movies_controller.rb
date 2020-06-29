@@ -8,6 +8,7 @@ class MoviesController < ApplicationController
 
   # GET /movies/1
   def show
+    @role = Role.new
   end
 
   # GET /movies/new
