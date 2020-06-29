@@ -99,53 +99,5 @@
     <% end %>
   </div>
 
-  <div class="form-group">
-    <% email_class = "form-control" %>
-    <% email_was_invalid = director.errors.include?(:email) %>
-
-    <% if was_validated %>
-      <% if email_was_invalid %>
-        <% email_class << " is-invalid" %>
-      <% else %>
-        <% email_class << " is-valid" %>
-      <% end %>
-    <% end %>
-
-    <%= f.label :email %>
-
-    <%= f.text_field :email, class: email_class, placeholder: "Enter email" %>
-    <% if email_was_invalid %>
-      <% director.errors.full_messages_for(:email).each do |message| %>
-        <div class="invalid-feedback d-flex">
-          <%= message %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-
-  <div class="form-group">
-    <% password_class = "form-control" %>
-    <% password_was_invalid = director.errors.include?(:password) %>
-
-    <% if was_validated %>
-      <% if password_was_invalid %>
-        <% password_class << " is-invalid" %>
-      <% else %>
-        <% password_class << " is-valid" %>
-      <% end %>
-    <% end %>
-
-    <%= f.label :password %>
-
-    <%= f.text_field :password, class: password_class, placeholder: "Enter password" %>
-    <% if password_was_invalid %>
-      <% director.errors.full_messages_for(:password).each do |message| %>
-        <div class="invalid-feedback d-flex">
-          <%= message %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>
