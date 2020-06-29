@@ -53,6 +53,6 @@ class DirectorsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def director_params
-      params.require(:director).permit(:name, :dob, :bio, :image, :email, :password)
+      params.require(:director).permit(:name, :dob, :bio, :image)
     end
 end
