@@ -3,7 +3,8 @@ class RolesController < ApplicationController
 
   # GET /roles
   def index
-    @roles = Role.page(params[:page]).per(10)
+    @q = Role.ransack(params[:q])
+    @roles = @q.result(:distinct => true).includes(:movie, :actor).page(params[:page]).per(10)
   end
 
   # GET /roles/1
