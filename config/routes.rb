@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   use_doorkeeper
   scope path: ApplicationResource.endpoint_namespace, defaults: { format: :jsonapi } do
     scope module: 'api/v1', as: 'api' do
+      get "/current_director" => "directors#show"
+
+      get "/current_actor" => "actors#show"
+
       resources :roles
 
       resources :actors
