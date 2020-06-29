@@ -5,6 +5,8 @@ class Role < ApplicationRecord
 
   # Validations
 
+  validates :actor_id, :presence => true
+
   validates :character_name, :presence => true
 
   validates :movie_id, :presence => true
