@@ -3,7 +3,7 @@ class RolesController < ApplicationController
 
   # GET /roles
   def index
-    @roles = Role.all
+    @roles = Role.page(params[:page]).per(10)
   end
 
   # GET /roles/1
