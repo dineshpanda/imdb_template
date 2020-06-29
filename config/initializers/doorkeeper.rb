@@ -73,7 +73,7 @@ Doorkeeper.configure do
   # update `resource_owner_type` column in the database and fix migration template as it will
   # set NOT NULL constraint for Access Grants table.
   #
-  # use_polymorphic_resource_owner
+  use_polymorphic_resource_owner
 
   # If you are planning to use Doorkeeper in Rails 5 API-only application, then you might
   # want to use API mode that will skip all the views management and change the way how
