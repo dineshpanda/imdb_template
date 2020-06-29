@@ -10,13 +10,9 @@
   <ul class="list-group list-group-flush">
     <% @movie.roles.each do |role| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <a href="/roles/<%= role.id %>">
-          <%= role.character_name %>
-        </a>
+        <%= link_to role.character_name, role_path(role) %>
 
-        <a href="/delete_role_from_movie/<%= role.id %>">
-          Delete
-        </a>
+        <%= link_to "Delete", role_path(role), method: :delete %>
 
       </li>
     <% end %>
