@@ -1,0 +1,92 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      ImdbTemplate
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsible-nav-links" aria-controls="collapsible-nav-links" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="collapsible-nav-links">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Resources
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a href="/roles" class="dropdown-item">
+              Roles
+            </a>
+            <a href="/actors" class="dropdown-item">
+              Actors
+            </a>
+            <a href="/directors" class="dropdown-item">
+              Directors
+            </a>
+            <a href="/movies" class="dropdown-item">
+              Movies
+            </a>
+            <a href="/rails_direct_uploads" class="dropdown-item">
+              Rails Direct Uploads
+            </a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <% if current_actor.blank? %>
+          <li class="nav-item">
+            <a href="/actors/sign_in" class="nav-link">
+              Actor sign in
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/actors/sign_up" class="nav-link">
+              Actor sign up
+            </a>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <a href="/actors/edit" class="nav-link">
+              Actor edit profile
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/actors/sign_out" data-method="delete" class="nav-link">
+              Actor sign out
+            </a>
+          </li>
+        <% end %>
+      </ul>
+      <ul class="navbar-nav">
+        <% if current_director.blank? %>
+          <li class="nav-item">
+            <a href="/directors/sign_in" class="nav-link">
+              Director sign in
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/directors/sign_up" class="nav-link">
+              Director sign up
+            </a>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <a href="/directors/edit" class="nav-link">
+              Director edit profile
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/directors/sign_out" data-method="delete" class="nav-link">
+              Director sign out
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </div> <!-- .navbar-collapse -->
+  </div> <!-- .container -->
+</nav>
