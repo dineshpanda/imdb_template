@@ -1,3 +1,9 @@
+PATH
+  remote: /Users/dineshpanda/LiveProjects/firstdraft/ideas_generators
+  specs:
+    ideas_generators (0.1.0)
+      railties
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -233,6 +239,7 @@ DEPENDENCIES
   byebug
   coffee-rails
   devise (~> 4.7.2)
+  ideas_generators!
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
