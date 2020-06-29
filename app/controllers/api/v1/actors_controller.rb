@@ -5,9 +5,11 @@ class Api::V1::ActorsController < Api::V1::GraphitiController
   end
 
   def show
-    actor = ActorResource.find(params)
+    base_scope = params[:id].blank? ? Actor.where(id: current_resource_owner) : Actor.all
+    actor = ActorResource.find(params, base_scope)
     respond_with(actor)
   end
+
 
   def create
     actor = ActorResource.build(params)

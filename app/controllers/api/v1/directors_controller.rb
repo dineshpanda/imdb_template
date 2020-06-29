@@ -5,9 +5,11 @@ class Api::V1::DirectorsController < Api::V1::GraphitiController
   end
 
   def show
-    director = DirectorResource.find(params)
+    base_scope = params[:id].blank? ? Director.where(id: current_resource_owner) : Director.all
+    director = DirectorResource.find(params, base_scope)
     respond_with(director)
   end
+
 
   def create
     director = DirectorResource.build(params)
