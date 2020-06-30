@@ -1,24 +1,32 @@
-<form action="/roles">
-  
-            <input type="hidden" name="movie_id" value="<%= @movie.id %>">
-          
-              <div class="form-group">
-        <label for="actor_id">
-          Actor
-        </label>
+<%= form_with(model: @role, local: true) do |form| %>
+  <% if role.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(role.errors.count, "error") %> prohibited this role from being saved:</h2>
 
-                    <input type="text" id="actor_id" name="actor_id" class="form-control" value="<%= @role.actor_id %>">
-                        </div>
-          
-              <div class="form-group">
-        <label for="character_name">
-          Character name
-        </label>
+    <ul>
+      <% role.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+        <% end %>
+    </ul>
+  </div>
+  <% end %>
 
-                    <input type="text" id="character_name" name="character_name" class="form-control" value="<%= @role.character_name %>">
-                        </div>
-          
-    <button class="btn btn-block btn-outline-secondary">
-    Create role
-  </button>
-</form>
+      <div class="field">
+            <%= form.label :movie_id %>
+      <%= form.text_field :movie_id %>
+          </div>
+
+      <div class="field">
+            <%= form.label :actor_id %>
+      <%= form.number_field :actor_id %>
+          </div>
+
+      <div class="field">
+            <%= form.label :character_name %>
+      <%= form.text_field :character_name %>
+          </div>
+
+    <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
