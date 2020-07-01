@@ -7,10 +7,15 @@ class RoleResource < ApplicationResource
   attribute :character_name, :string
   attribute :description, :string
   attribute :role_type, :integer_enum, allow: Role.role_types.keys
+  attribute :lead, :boolean
 
   # Direct associations
 
   belongs_to :actor
+
+  belongs_to :lead_movie,
+             resource: MovieResource,
+             foreign_key: movie_id
 
   belongs_to :movie
 

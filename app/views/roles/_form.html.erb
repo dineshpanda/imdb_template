@@ -1,8 +1,6 @@
 <% was_validated = role.errors.any? %>
 
-<% form_html_options = { novalidate: true, class: "mb-3" } %>
-
-<%= form_for(role, html: form_html_options) do |f| %>
+<%= form_with(model: role, local: true, novalidate: true, class: "mb-3") do |f| %>
   <div class="form-group">
     <% movie_id_class = "form-control" %>
     <% movie_id_was_invalid = role.errors.include?(:movie_id) %>
@@ -16,7 +14,6 @@
     <% end %>
 
     <%= f.label :movie_id %>
-
     <%= f.number_field :movie_id, class: movie_id_class, placeholder: "Enter movie" %>
     <% if movie_id_was_invalid %>
       <% role.errors.full_messages_for(:movie_id).each do |message| %>
@@ -26,7 +23,6 @@
       <% end %>
     <% end %>
   </div>
-
   <div class="form-group">
     <% actor_id_class = "form-control" %>
     <% actor_id_was_invalid = role.errors.include?(:actor_id) %>
@@ -40,7 +36,6 @@
     <% end %>
 
     <%= f.label :actor_id %>
-
     <%= f.number_field :actor_id, class: actor_id_class, placeholder: "Enter actor" %>
     <% if actor_id_was_invalid %>
       <% role.errors.full_messages_for(:actor_id).each do |message| %>
@@ -50,7 +45,6 @@
       <% end %>
     <% end %>
   </div>
-
   <div class="form-group">
     <% character_name_class = "form-control" %>
     <% character_name_was_invalid = role.errors.include?(:character_name) %>
@@ -64,7 +58,6 @@
     <% end %>
 
     <%= f.label :character_name %>
-
     <%= f.text_field :character_name, class: character_name_class, placeholder: "Enter character name" %>
     <% if character_name_was_invalid %>
       <% role.errors.full_messages_for(:character_name).each do |message| %>
@@ -74,7 +67,6 @@
       <% end %>
     <% end %>
   </div>
-
   <div class="form-group">
     <% description_class = "form-control" %>
     <% description_was_invalid = role.errors.include?(:description) %>
@@ -88,7 +80,6 @@
     <% end %>
 
     <%= f.label :description %>
-
     <%= f.text_area :description, class: description_class, placeholder: "Enter description" %>
     <% if description_was_invalid %>
       <% role.errors.full_messages_for(:description).each do |message| %>
@@ -98,7 +89,6 @@
       <% end %>
     <% end %>
   </div>
-
   <div class="form-group">
     <% role_type_class = "form-control" %>
     <% role_type_was_invalid = role.errors.include?(:role_type) %>
@@ -112,8 +102,7 @@
     <% end %>
 
     <%= f.label :role_type %>
-
-    <%= f.number_field :role_type, class: role_type_class, placeholder: "Enter role type" %>
+    <%= select_tag(:role_type, options_for_select(Role.role_types.keys), class: "form-control") %>
     <% if role_type_was_invalid %>
       <% role.errors.full_messages_for(:role_type).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -122,6 +111,28 @@
       <% end %>
     <% end %>
   </div>
+  <div class="form-check">
+    <% lead_class = "form-check-input" %>
+    <% lead_was_invalid = role.errors.include?(:lead) %>
 
+    <% if was_validated %>
+      <% if lead_was_invalid %>
+        <% lead_class << " is-invalid" %>
+      <% else %>
+        <% lead_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :lead, class: "form-check-label" do %>
+      <%= f.check_box :lead, class: lead_class %> Lead
+    <% end %>
+    <% if lead_was_invalid %>
+      <% role.errors.full_messages_for(:lead).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>
