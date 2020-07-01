@@ -1,32 +1,31 @@
 class Actor < ApplicationRecord
   # Direct associations
   has_many :access_grants,
-           class_name: 'Doorkeeper::AccessGrant',
+           class_name: "Doorkeeper::AccessGrant",
            foreign_key: :resource_owner_id,
            dependent: :delete_all # or :destroy if you need callbacks
 
   has_many :access_tokens,
-           class_name: 'Doorkeeper::AccessToken',
+           class_name: "Doorkeeper::AccessToken",
            foreign_key: :resource_owner_id,
            dependent: :delete_all # or :destroy if you need callbacks
 
-
   has_many   :roles,
-             :dependent => :destroy
+             dependent: :destroy
 
   # Indirect associations
 
   has_many   :filmography,
-             :through => :roles,
-             :source => :movie
+             through: :roles,
+             source: :movie
 
   has_many   :directors,
-             :through => :filmography,
-             :source => :director
+             through: :filmography,
+             source: :director
 
   # Validations
 
-  validates :name, :presence => true
+  validates :name, presence: true
 
   # Scopes
 

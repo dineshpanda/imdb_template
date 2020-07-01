@@ -1,5 +1,5 @@
 class ActorResource < ApplicationResource
-  secondary_endpoint '/current_actor', [:show]
+  secondary_endpoint "/current_actor", [:show]
   attribute :id, :integer, writable: false
   attribute :created_at, :datetime, writable: false
   attribute :updated_at, :datetime, writable: false
@@ -12,7 +12,7 @@ class ActorResource < ApplicationResource
 
   # Direct associations
 
-  has_many   :roles
+  has_many :roles
 
   # Indirect associations
 
@@ -27,10 +27,9 @@ class ActorResource < ApplicationResource
     end
   end
 
-
   filter :director_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:directors).where(:movies => {:director_id => value})
+      scope.eager_load(:directors).where(movies: { director_id: value })
     end
   end
 end
