@@ -14,7 +14,7 @@
     <% end %>
 
     <%= f.label :movie_id %>
-    <%= f.number_field :movie_id, class: movie_id_class, placeholder: "Enter movie" %>
+    <%= f.select :movie_id, options_from_collection_for_select(Movie.all, :id, :title, @role.movie_id), {}, class: "form-control" %>
     <% if movie_id_was_invalid %>
       <% role.errors.full_messages_for(:movie_id).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -36,7 +36,7 @@
     <% end %>
 
     <%= f.label :actor_id %>
-    <%= f.number_field :actor_id, class: actor_id_class, placeholder: "Enter actor" %>
+    <%= f.select :actor_id, options_from_collection_for_select(Actor.all, :id, :name, @role.actor_id), {}, class: "form-control" %>
     <% if actor_id_was_invalid %>
       <% role.errors.full_messages_for(:actor_id).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -102,7 +102,7 @@
     <% end %>
 
     <%= f.label :role_type %>
-    <%= select_tag(:role_type, options_for_select(Role.role_types.keys), class: "form-control") %>
+    <%= f.select :role_type, options_for_select(Role.role_types.keys), {}, class: "form-control" %>
     <% if role_type_was_invalid %>
       <% role.errors.full_messages_for(:role_type).each do |message| %>
         <div class="invalid-feedback d-flex">
