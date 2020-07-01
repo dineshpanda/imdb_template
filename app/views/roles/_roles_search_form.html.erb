@@ -12,6 +12,21 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :lead_eq, "Lead" %>
+    <div>
+      <label class="radio-inline">
+        <%= f.radio_button :lead_eq, "1", checked: ((params[:q] && params[:q][:lead_eq]) == "1" ? "checked" : "") %> Yes
+      </label>
+      <label class="radio-inline">
+        <%= f.radio_button :lead_eq, "0", checked: ((params[:q] && params[:q][:lead_eq]) == "0" ? "checked" : "")%> No
+      </label>
+      <label class="radio-inline">
+        <%= f.radio_button :lead_eq, ""%> Either
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group">
     <%= f.label :created_at, "Created at" %>
     <div class="row">
       <div class='col-md-6 mb-1'>
@@ -55,6 +70,11 @@
   <div class="form-group">
     <%= f.label :movie_title_cont, "Movie title contains" %>
     <%= f.text_field :movie_title_cont, :class => "form-control", :placeholder => "Movie title contains" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :lead_movie_title_cont, "Movie title contains" %>
+    <%= f.text_field :lead_movie_title_cont, :class => "form-control", :placeholder => "Movie title contains" %>
   </div>
 
   <div class="form-group">
