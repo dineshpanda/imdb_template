@@ -4,7 +4,7 @@ class MoviesController < ApplicationController
   # GET /movies
   def index
     @q = Movie.ransack(params[:q])
-    @movies = @q.result(:distinct => true).includes(:roles, :director, :cast).page(params[:page]).per(10)
+    @movies = @q.result(:distinct => true).includes(:roles, :lead_roles, :director, :cast).page(params[:page]).per(10)
   end
 
   # GET /movies/1

@@ -4,7 +4,7 @@
 
   <div class="form-group">
     <%= f.label :actor_id %>
-    <%= select_tag(:actor_id, options_from_collection_for_select(Actor.all, :id, :name, @role.actor_id), class: "form-control") %>
+    <%= f.text_field :actor_id, class: "form-control" %>
   </div>
 
   <div class="form-group">
@@ -19,7 +19,7 @@
 
   <div class="form-group">
     <%= f.label :role_type %>
-    <%= select_tag(:role_type, options_for_select(Role.role_types.keys), class: "form-control") %>
+    <%= f.text_field :role_type, class: "form-control" %>
   </div>
 
 

@@ -6,6 +6,10 @@ class Role < ApplicationRecord
   belongs_to :actor,
              :counter_cache => true
 
+  belongs_to :lead_movie,
+             :class_name => "Movie",
+             :foreign_key => "movie_id"
+
   belongs_to :movie,
              :counter_cache => true
 
@@ -20,5 +24,7 @@ class Role < ApplicationRecord
   validates :movie_id, :presence => true
 
   # Scopes
+
+  scope :lead, -> { where(roles: { lead: [true] }) }
 
 end
