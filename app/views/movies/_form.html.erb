@@ -1,8 +1,6 @@
 <% was_validated = movie.errors.any? %>
 
-<% form_html_options = { novalidate: true, class: "mb-3" } %>
-
-<%= form_for(movie, html: form_html_options) do |f| %>
+<%= form_with(model: movie, local: true, novalidate: true, class: "mb-3") do |f| %>
   <div class="form-group">
     <% title_class = "form-control" %>
     <% title_was_invalid = movie.errors.include?(:title) %>
@@ -16,7 +14,6 @@
     <% end %>
 
     <%= f.label :title %>
-
     <%= f.text_field :title, class: title_class, placeholder: "Enter title" %>
     <% if title_was_invalid %>
       <% movie.errors.full_messages_for(:title).each do |message| %>
@@ -26,7 +23,6 @@
       <% end %>
     <% end %>
   </div>
-
   <div class="form-group">
     <% year_class = "form-control" %>
     <% year_was_invalid = movie.errors.include?(:year) %>
@@ -40,7 +36,6 @@
     <% end %>
 
     <%= f.label :year %>
-
     <%= f.number_field :year, class: year_class, placeholder: "Enter year" %>
     <% if year_was_invalid %>
       <% movie.errors.full_messages_for(:year).each do |message| %>
@@ -50,7 +45,6 @@
       <% end %>
     <% end %>
   </div>
-
   <div class="form-group">
     <% duration_class = "form-control" %>
     <% duration_was_invalid = movie.errors.include?(:duration) %>
@@ -64,7 +58,6 @@
     <% end %>
 
     <%= f.label :duration %>
-
     <%= f.number_field :duration, class: duration_class, placeholder: "Enter duration" %>
     <% if duration_was_invalid %>
       <% movie.errors.full_messages_for(:duration).each do |message| %>
@@ -74,7 +67,6 @@
       <% end %>
     <% end %>
   </div>
-
   <div class="form-group">
     <% description_class = "form-control" %>
     <% description_was_invalid = movie.errors.include?(:description) %>
@@ -88,7 +80,6 @@
     <% end %>
 
     <%= f.label :description %>
-
     <%= f.text_area :description, class: description_class, placeholder: "Enter description" %>
     <% if description_was_invalid %>
       <% movie.errors.full_messages_for(:description).each do |message| %>
@@ -98,7 +89,6 @@
       <% end %>
     <% end %>
   </div>
-
   <div class="form-group">
     <% image_class = "form-control" %>
     <% image_was_invalid = movie.errors.include?(:image) %>
@@ -112,7 +102,6 @@
     <% end %>
 
     <%= f.label :image %>
-
     <%= f.text_field :image, class: image_class, placeholder: "Enter image" %>
     <% if image_was_invalid %>
       <% movie.errors.full_messages_for(:image).each do |message| %>
@@ -122,7 +111,6 @@
       <% end %>
     <% end %>
   </div>
-
   <div class="form-group">
     <% director_id_class = "form-control" %>
     <% director_id_was_invalid = movie.errors.include?(:director_id) %>
@@ -136,7 +124,6 @@
     <% end %>
 
     <%= f.label :director_id %>
-
     <%= f.number_field :director_id, class: director_id_class, placeholder: "Enter director" %>
     <% if director_id_was_invalid %>
       <% movie.errors.full_messages_for(:director_id).each do |message| %>
@@ -146,6 +133,5 @@
       <% end %>
     <% end %>
   </div>
-
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Lead Roles
+
+    <a data-toggle="collapse" href="#movie_lead_roles_new_form">
+      Add role
+    </a>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @movie.lead_roles.each do |role| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <%= link_to role.character_name, role_path(role) %>
+
+        <%= link_to "Delete", role_path(role), method: :delete %>
+
+      </li>
+    <% end %>
+
+    <div class="card-footer">
+      <div class="collapse" id="movie_lead_roles_new_form">
+        <%= render partial: "movies/movie_lead_roles_new_form" %>
+      </div>
+    </div>
+
+  </ul>
+</div>

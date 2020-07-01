@@ -6,6 +6,7 @@ class CreateRoles < ActiveRecord::Migration[6.0]
       t.string :character_name
       t.text :description
       t.integer :role_type
+      t.boolean :lead
 
       t.timestamps
     end

@@ -13,6 +13,9 @@ class MovieResource < ApplicationResource
 
   belongs_to :director
 
+  has_many   :lead_roles,
+             resource: RoleResource
+
   has_many   :roles
 
   # Indirect associations
