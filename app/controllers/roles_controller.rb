@@ -21,11 +21,15 @@ class RolesController < ApplicationController
   end
 
   # POST /roles
-  def create
+      def create
     @role = Role.new(role_params)
 
     if @role.save
-      redirect_to @role, notice: 'Role was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer
+      else
+        redirect_to @role, notice: 'Role was successfully created.'
+      end
     else
       render :new
     end
