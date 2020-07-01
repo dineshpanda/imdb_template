@@ -6,6 +6,8 @@ RSpec.describe Role, type: :model do
 
     it { should belong_to(:actor) }
 
+    it { should belong_to(:lead_movie) }
+
     it { should belong_to(:movie) }
 
     end

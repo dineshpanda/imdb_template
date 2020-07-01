@@ -4,7 +4,7 @@ class RolesController < ApplicationController
   # GET /roles
   def index
     @q = Role.ransack(params[:q])
-    @roles = @q.result(:distinct => true).includes(:movie, :actor).page(params[:page]).per(10)
+    @roles = @q.result(:distinct => true).includes(:movie, :lead_movie, :actor).page(params[:page]).per(10)
   end
 
   # GET /roles/1
@@ -54,6 +54,6 @@ class RolesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def role_params
-      params.require(:role).permit(:movie_id, :actor_id, :character_name, :description, :role_type)
+      params.require(:role).permit(:movie_id, :actor_id, :character_name, :description, :role_type, :lead)
     end
 end
