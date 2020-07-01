@@ -1,0 +1,31 @@
+<%= form_with(model: @role, local: true) do |f| %>
+
+  <div class="form-group">
+    <%= f.label :movie_id %>
+    <%= f.select :movie_id, options_from_collection_for_select(Movie.all, :id, :title, @role.movie_id), {}, class: "form-control" %>
+  </div>
+
+  <%= f.hidden_field :actor_id, value: @actor.id %>
+
+  <div class="form-group">
+    <%= f.label :character_name %>
+    <%= f.text_field :character_name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, rows: "3", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :role_type %>
+    <%= f.select :role_type, options_for_select(Role.role_types.keys), {}, class: "form-control" %>
+  </div>
+
+  <div class="form-check">
+    <%= f.check_box :lead, class: "form-check-input" %>
+    <%= f.label :lead, class: "form-check-label" %>
+  </div>
+
+  <%= f.submit "Create role", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

@@ -1,5 +1,5 @@
 class DirectorsController < ApplicationController
-  before_action :set_director, only: [:show, :edit, :update, :destroy]
+  before_action :set_director, only: %i[show edit update destroy]
 
   # GET /directors
   def index
@@ -8,6 +8,7 @@ class DirectorsController < ApplicationController
 
   # GET /directors/1
   def show
+    @movie = Movie.new
   end
 
   # GET /directors/new
@@ -16,15 +17,14 @@ class DirectorsController < ApplicationController
   end
 
   # GET /directors/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /directors
   def create
     @director = Director.new(director_params)
 
     if @director.save
-      redirect_to @director, notice: 'Director was successfully created.'
+      redirect_to @director, notice: "Director was successfully created."
     else
       render :new
     end
@@ -33,7 +33,7 @@ class DirectorsController < ApplicationController
   # PATCH/PUT /directors/1
   def update
     if @director.update(director_params)
-      redirect_to @director, notice: 'Director was successfully updated.'
+      redirect_to @director, notice: "Director was successfully updated."
     else
       render :edit
     end
@@ -42,17 +42,18 @@ class DirectorsController < ApplicationController
   # DELETE /directors/1
   def destroy
     @director.destroy
-    redirect_to directors_url, notice: 'Director was successfully destroyed.'
+    redirect_to directors_url, notice: "Director was successfully destroyed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_director
-      @director = Director.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def director_params
-      params.require(:director).permit(:name, :dob, :bio, :image)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_director
+    @director = Director.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def director_params
+    params.require(:director).permit(:name, :dob, :bio, :image)
+  end
 end

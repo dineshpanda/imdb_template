@@ -13,7 +13,7 @@ class Api::V1::MoviesController < Api::V1::GraphitiController
     movie = MovieResource.build(params)
 
     if movie.save
-      render jsonapi: movie, status: 201
+      render jsonapi: movie, status: :created
     else
       render jsonapi_errors: movie
     end
@@ -22,7 +22,7 @@ class Api::V1::MoviesController < Api::V1::GraphitiController
   def update
     movie = MovieResource.find(params)
 
-    if movie.update_attributes
+    if movie.update
       render jsonapi: movie
     else
       render jsonapi_errors: movie
@@ -33,7 +33,7 @@ class Api::V1::MoviesController < Api::V1::GraphitiController
     movie = MovieResource.find(params)
 
     if movie.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: movie
     end
