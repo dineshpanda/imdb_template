@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class AddDeviseToDirectors < ActiveRecord::Migration[6.0]
+class AddDeviseToActors < ActiveRecord::Migration[6.0]
   def self.up
-    change_table :directors do |t|
+    change_table :actors do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -32,15 +32,14 @@ class AddDeviseToDirectors < ActiveRecord::Migration[6.0]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-
       # Uncomment below if timestamps were not included in your original model.
       # t.timestamps null: false
     end
 
-    add_index :directors, :email,                unique: true
-    add_index :directors, :reset_password_token, unique: true
-    # add_index :directors, :confirmation_token,   unique: true
-    # add_index :directors, :unlock_token,         unique: true
+    add_index :actors, :email,                unique: true
+    add_index :actors, :reset_password_token, unique: true
+    # add_index :actors, :confirmation_token,   unique: true
+    # add_index :actors, :unlock_token,         unique: true
   end
 
   def self.down
