@@ -102,7 +102,7 @@
     <% end %>
 
     <%= f.label :role_type %>
-    <%= select_tag(:role_type, options_for_select(Role.role_types.keys), class: "form-control") %>
+    <%= f.select :role_type, options_for_select(Role.role_types.keys), {}, class: "form-control" %>
     <% if role_type_was_invalid %>
       <% role.errors.full_messages_for(:role_type).each do |message| %>
         <div class="invalid-feedback d-flex">
