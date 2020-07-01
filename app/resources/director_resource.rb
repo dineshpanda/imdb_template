@@ -1,5 +1,5 @@
 class DirectorResource < ApplicationResource
-  secondary_endpoint '/current_director', [:show]
+  secondary_endpoint "/current_director", [:show]
   attribute :id, :integer, writable: false
   attribute :created_at, :datetime, writable: false
   attribute :updated_at, :datetime, writable: false
@@ -25,10 +25,9 @@ class DirectorResource < ApplicationResource
     end
   end
 
-
   filter :actor_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:casts).where(:roles => {:actor_id => value})
+      scope.eager_load(:casts).where(roles: { actor_id: value })
     end
   end
 end
