@@ -46,7 +46,12 @@ class RolesController < ApplicationController
   # DELETE /roles/1
   def destroy
     @role.destroy
-    redirect_to roles_url, notice: "Role was successfully destroyed."
+    message = "Role was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
+    else
+      redirect_to roles_url, notice: message
+    end
   end
 
   private

@@ -23,7 +23,7 @@ class Api::V1::DirectorsController < Api::V1::GraphitiController
   def update
     director = DirectorResource.find(params)
 
-    if director.update
+    if director.update_attributes
       render jsonapi: director
     else
       render jsonapi_errors: director

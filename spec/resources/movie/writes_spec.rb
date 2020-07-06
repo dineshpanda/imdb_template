@@ -41,7 +41,7 @@ RSpec.describe MovieResource, type: :resource do
 
     xit "works (add some attributes and enable this spec)" do
       expect do
-        expect(instance.update).to eq(true)
+        expect(instance.update_attributes).to eq(true)
       end.to change { movie.reload.updated_at }
       # .and change { movie.foo }.to('bar') <- example
     end
