@@ -41,7 +41,7 @@ RSpec.describe ActorResource, type: :resource do
 
     xit "works (add some attributes and enable this spec)" do
       expect do
-        expect(instance.update).to eq(true)
+        expect(instance.update_attributes).to eq(true)
       end.to change { actor.reload.updated_at }
       # .and change { actor.foo }.to('bar') <- example
     end

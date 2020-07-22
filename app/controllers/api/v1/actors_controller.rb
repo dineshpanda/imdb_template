@@ -23,7 +23,7 @@ class Api::V1::ActorsController < Api::V1::GraphitiController
   def update
     actor = ActorResource.find(params)
 
-    if actor.update
+    if actor.update_attributes
       render jsonapi: actor
     else
       render jsonapi_errors: actor

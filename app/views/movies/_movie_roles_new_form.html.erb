@@ -17,11 +17,6 @@
     <%= f.text_area :description, rows: "3", class: "form-control" %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :role_type %>
-    <%= f.select :role_type, options_for_select(Role.role_types.keys), {}, class: "form-control" %>
-  </div>
-
   <div class="form-check">
     <%= f.check_box :lead, class: "form-check-input" %>
     <%= f.label :lead, class: "form-check-label" %>

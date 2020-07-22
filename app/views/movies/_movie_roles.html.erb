@@ -12,7 +12,9 @@
       <li class="list-group-item d-flex align-items-center justify-content-between">
         <%= link_to role.character_name, role_path(role) %>
 
-        <%= link_to "Delete", role_path(role), method: :delete %>
+        <%= link_to role, method: :delete, data: { confirm: "Do you really want to delete this role" } do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
 
       </li>
     <% end %>

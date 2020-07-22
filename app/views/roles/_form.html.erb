@@ -89,28 +89,6 @@
       <% end %>
     <% end %>
   </div>
-  <div class="form-group">
-    <% role_type_class = "form-control" %>
-    <% role_type_was_invalid = role.errors.include?(:role_type) %>
-
-    <% if was_validated %>
-      <% if role_type_was_invalid %>
-        <% role_type_class << " is-invalid" %>
-      <% else %>
-        <% role_type_class << " is-valid" %>
-      <% end %>
-    <% end %>
-
-    <%= f.label :role_type %>
-    <%= f.select :role_type, options_for_select(Role.role_types.keys), {}, class: "form-control" %>
-    <% if role_type_was_invalid %>
-      <% role.errors.full_messages_for(:role_type).each do |message| %>
-        <div class="invalid-feedback d-flex">
-          <%= message %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
   <div class="form-check">
     <% lead_class = "form-check-input" %>
     <% lead_was_invalid = role.errors.include?(:lead) %>

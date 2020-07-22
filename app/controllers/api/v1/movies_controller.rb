@@ -22,7 +22,7 @@ class Api::V1::MoviesController < Api::V1::GraphitiController
   def update
     movie = MovieResource.find(params)
 
-    if movie.update
+    if movie.update_attributes
       render jsonapi: movie
     else
       render jsonapi_errors: movie

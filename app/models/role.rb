@@ -1,6 +1,4 @@
 class Role < ApplicationRecord
-  enum role_type: { "hero" => 0, " heroin" => 1, " supporting" => 2 }
-
   # Direct associations
 
   belongs_to :actor,
@@ -25,5 +23,5 @@ class Role < ApplicationRecord
 
   # Scopes
 
-  scope :lead, -> { where(roles: { lead: [true] }) }
+  scope :lead, -> { where(lead: [true]) }
 end
