@@ -22,7 +22,7 @@ class Api::V1::RolesController < Api::V1::GraphitiController
   def update
     role = RoleResource.find(params)
 
-    if role.update
+    if role.update_attributes
       render jsonapi: role
     else
       render jsonapi_errors: role

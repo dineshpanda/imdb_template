@@ -5,7 +5,7 @@ namespace :db do
     tables = connection.tables
     tables.each do |table|
       puts "Deleting #{table}"
-      connection.drop_table(table)
+      connection.drop_table(table, force: :cascade)
     rescue StandardError => e
       puts e.message
     end

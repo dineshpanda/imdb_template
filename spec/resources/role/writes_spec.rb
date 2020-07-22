@@ -1,63 +1,63 @@
 require "rails_helper"
 
-RSpec.describe DirectorResource, type: :resource do
+RSpec.describe RoleResource, type: :resource do
   describe "creating" do
     let(:payload) do
       {
         data: {
-          type: "directors",
-          attributes: attributes_for(:director),
+          type: "roles",
+          attributes: attributes_for(:role),
         },
       }
     end
 
     let(:instance) do
-      DirectorResource.build(payload)
+      RoleResource.build(payload)
     end
 
     it "works" do
       expect do
         expect(instance.save).to eq(true), instance.errors.full_messages.to_sentence
-      end.to change { Director.count }.by(1)
+      end.to change { Role.count }.by(1)
     end
   end
 
   describe "updating" do
-    let!(:director) { create(:director) }
+    let!(:role) { create(:role) }
 
     let(:payload) do
       {
         data: {
-          id: director.id.to_s,
-          type: "directors",
+          id: role.id.to_s,
+          type: "roles",
           attributes: {}, # Todo!
         },
       }
     end
 
     let(:instance) do
-      DirectorResource.find(payload)
+      RoleResource.find(payload)
     end
 
     xit "works (add some attributes and enable this spec)" do
       expect do
         expect(instance.update_attributes).to eq(true)
-      end.to change { director.reload.updated_at }
-      # .and change { director.foo }.to('bar') <- example
+      end.to change { role.reload.updated_at }
+      # .and change { role.foo }.to('bar') <- example
     end
   end
 
   describe "destroying" do
-    let!(:director) { create(:director) }
+    let!(:role) { create(:role) }
 
     let(:instance) do
-      DirectorResource.find(id: director.id)
+      RoleResource.find(id: role.id)
     end
 
     it "works" do
       expect do
         expect(instance.destroy).to eq(true)
-      end.to change { Director.count }.by(-1)
+      end.to change { Role.count }.by(-1)
     end
   end
 end
