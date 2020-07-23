@@ -20,11 +20,6 @@
     <%= f.text_area :description, rows: "3", class: "form-control" %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :image %>
-    <%= f.text_field :image, class: "form-control" %>
-  </div>
-
   <%= f.hidden_field :director_id, value: @director.id %>
 
   <%= f.submit "Create movie", class: "btn btn-block btn-outline-secondary" %>

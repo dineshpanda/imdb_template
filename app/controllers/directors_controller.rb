@@ -3,6 +3,10 @@ class DirectorsController < ApplicationController
 
   def index
     @directors = Director.page(params[:page]).per(10)
+    @location_hash = Gmaps4rails.build_markers(@directors.where.not(address_latitude: nil)) do |director, marker|
+      marker.lat director.address_latitude
+      marker.lng director.address_longitude
+    end
   end
 
   def show
@@ -45,6 +49,6 @@ class DirectorsController < ApplicationController
   end
 
   def director_params
-    params.require(:director).permit(:name, :dob, :bio, :image)
+    params.require(:director).permit(:name, :dob, :bio, :image, :address)
   end
 end

@@ -14,8 +14,10 @@
       <dt>Bio</dt>
       <dd><%= actor.bio %></dd>
 
-      <dt>Image</dt>
-      <dd><%= actor.image %></dd>
+      <dt>Img</dt>
+      <dd>
+        <%= cl_image_tag @actor.img, class: "img-fluid" %>
+      </dd>
 
     </dl>
 
