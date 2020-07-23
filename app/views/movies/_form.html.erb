@@ -102,7 +102,7 @@
     <% end %>
 
     <%= f.label :image %>
-    <%= f.text_field :image, class: image_class, placeholder: "Enter image" %>
+    <%= f.file_field :image, class: "form-control" %>
     <% if image_was_invalid %>
       <% movie.errors.full_messages_for(:image).each do |message| %>
         <div class="invalid-feedback d-flex">
