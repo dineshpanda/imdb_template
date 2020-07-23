@@ -1,4 +1,6 @@
 class MoviesController < ApplicationController
+  before_action :current_director_must_be_movie_director, only: %i[edit update destroy]
+
   before_action :set_movie, only: %i[show edit update destroy]
 
   def index
@@ -51,11 +53,18 @@ class MoviesController < ApplicationController
 
   private
 
+  def current_director_must_be_movie_director
+    set_movie
+    unless current_director == @movie.director
+      redirect_back fallback_location: root_path, alert: "You are not authorized for that."
+    end
+  end
+
   def set_movie
     @movie = Movie.find(params[:id])
   end
 
   def movie_params
-    params.require(:movie).permit(:title, :year, :duration, :description, :image, :director_id)
+    params.require(:movie).permit(:title, :year, :duration, :description, :director_id)
   end
 end

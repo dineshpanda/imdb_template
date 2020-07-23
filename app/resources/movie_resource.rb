@@ -6,7 +6,6 @@ class MovieResource < ApplicationResource
   attribute :year, :integer
   attribute :duration, :integer
   attribute :description, :string
-  attribute :image, :string
   attribute :director_id, :integer
 
   # Direct associations
