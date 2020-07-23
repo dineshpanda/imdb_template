@@ -4,7 +4,7 @@
     "postdeploy": "bundle exec rails db:migrate && bundle exec rails db:seed && bundle exec rails dev:prime"
   },
   "env": {
-    "APPLICATION_HOST":{
+    "GMAP_API_KEY":{
       "required":true
     },
     "CLOUDINARY_CLOUD_NAME":{
@@ -15,6 +15,9 @@
     },
     "CLOUDINARY_API_SECRET":{
       "required":true
+    },
+    "ROLLBAR_ACCESS_TOKEN": {
+      "required": true
     },
     "SECRET_KEY_BASE": {
       "required": true,

@@ -3,6 +3,10 @@ class ActorsController < ApplicationController
 
   def index
     @actors = Actor.page(params[:page]).per(10)
+    @location_hash = Gmaps4rails.build_markers(@actors.where.not(address_latitude: nil)) do |actor, marker|
+      marker.lat actor.address_latitude
+      marker.lng actor.address_longitude
+    end
   end
 
   def show
@@ -45,6 +49,6 @@ class ActorsController < ApplicationController
   end
 
   def actor_params
-    params.require(:actor).permit(:name, :dob, :bio, :image)
+    params.require(:actor).permit(:name, :dob, :bio, :image, :address)
   end
 end
