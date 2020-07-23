@@ -5,9 +5,7 @@ class DirectorsController < ApplicationController
     @directors = Director.page(params[:page]).per(10)
   end
 
-  def show
-    @movie = Movie.new
-  end
+  def show; end
 
   def new
     @director = Director.new

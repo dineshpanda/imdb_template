@@ -68,21 +68,21 @@
     <% end %>
   </div>
   <div class="form-group">
-    <% image_class = "form-control" %>
-    <% image_was_invalid = actor.errors.include?(:image) %>
+    <% img_class = "form-control" %>
+    <% img_was_invalid = actor.errors.include?(:img) %>
 
     <% if was_validated %>
-      <% if image_was_invalid %>
-        <% image_class << " is-invalid" %>
+      <% if img_was_invalid %>
+        <% img_class << " is-invalid" %>
       <% else %>
-        <% image_class << " is-valid" %>
+        <% img_class << " is-valid" %>
       <% end %>
     <% end %>
 
-    <%= f.label :image %>
-    <%= f.text_field :image, class: image_class, placeholder: "Enter image" %>
-    <% if image_was_invalid %>
-      <% actor.errors.full_messages_for(:image).each do |message| %>
+    <%= f.label :img %>
+    <%= f.text_field :img, class: img_class, placeholder: "Enter img" %>
+    <% if img_was_invalid %>
+      <% actor.errors.full_messages_for(:img).each do |message| %>
         <div class="invalid-feedback d-flex">
           <%= message %>
         </div>
