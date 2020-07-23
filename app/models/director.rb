@@ -10,15 +10,7 @@ class Director < ApplicationRecord
            foreign_key: :resource_owner_id,
            dependent: :delete_all # or :destroy if you need callbacks
 
-  has_many   :filmography,
-             class_name: "Movie",
-             dependent: :nullify
-
   # Indirect associations
-
-  has_many   :casts,
-             through: :filmography,
-             source: :cast
 
   # Validations
 

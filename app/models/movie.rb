@@ -1,9 +1,6 @@
 class Movie < ApplicationRecord
   # Direct associations
 
-  belongs_to :director,
-             counter_cache: :filmography_count
-
   has_many   :lead_roles,
              -> { lead },
              class_name: "Role",
