@@ -15,7 +15,16 @@
       <dd><%= actor.bio %></dd>
 
       <dt>Image</dt>
-      <dd><%= actor.image %></dd>
+      <dd>
+        <%= cl_image_tag @actor.image, class: "img-fluid" %>
+      </dd>
+
+      <dt>Address</dt>
+      <dd>
+        <div>
+          <%= render partial: "actors/one_photo_map" %>
+        </div>
+      </dd>
 
     </dl>
 

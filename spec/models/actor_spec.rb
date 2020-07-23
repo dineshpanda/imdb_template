@@ -7,11 +7,11 @@ RSpec.describe Actor, type: :model do
 
   describe "InDirect Associations" do
     it { should have_many(:filmography) }
-
-    it { should have_many(:directors) }
   end
 
   describe "Validations" do
+    it { should validate_presence_of(:image) }
+
     it { should validate_presence_of(:name) }
   end
 end
