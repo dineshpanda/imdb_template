@@ -12,7 +12,7 @@ class DirectorResource < ApplicationResource
 
   # Direct associations
 
-  has_many   :filmography,
+  has_many   :films,
              resource: MovieResource
 
   # Indirect associations

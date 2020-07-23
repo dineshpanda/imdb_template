@@ -21,7 +21,7 @@ class Actor < ApplicationRecord
 
   has_many   :directors,
              through: :filmography,
-             source: :director
+             source: :dictator
 
   # Validations
 

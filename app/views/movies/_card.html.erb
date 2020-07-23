@@ -18,7 +18,9 @@
       <dd><%= movie.description %></dd>
 
       <dt>Image</dt>
-      <dd><%= movie.image %></dd>
+      <dd>
+        <%= cl_image_tag @movie.image, class: "img-fluid" %>
+      </dd>
 
       <dt>Director</dt>
       <dd><%= movie.director_id %></dd>
