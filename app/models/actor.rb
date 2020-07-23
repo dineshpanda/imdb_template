@@ -1,4 +1,6 @@
 class Actor < ApplicationRecord
+  mount_uploader :img, ImgUploader
+
   # Direct associations
   has_many :access_grants,
            class_name: "Doorkeeper::AccessGrant",
@@ -18,10 +20,6 @@ class Actor < ApplicationRecord
   has_many   :filmography,
              through: :roles,
              source: :movie
-
-  has_many   :directors,
-             through: :filmography,
-             source: :director
 
   # Validations
 

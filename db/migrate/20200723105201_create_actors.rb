@@ -4,7 +4,7 @@ class CreateActors < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :dob
       t.text :bio
-      t.string :image
+      t.string :img
 
       t.timestamps
     end
