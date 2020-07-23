@@ -11,7 +11,9 @@ class MovieResource < ApplicationResource
 
   # Direct associations
 
-  belongs_to :director
+  belongs_to :dictator,
+             resource: DirectorResource,
+             foreign_key: :director_id
 
   has_many   :lead_roles,
              resource: RoleResource
