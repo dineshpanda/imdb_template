@@ -6,12 +6,9 @@ class MovieResource < ApplicationResource
   attribute :year, :integer
   attribute :duration, :integer
   attribute :description, :string
-  attribute :image, :string
   attribute :director_id, :integer
 
   # Direct associations
-
-  belongs_to :director
 
   has_many   :lead_roles,
              resource: RoleResource

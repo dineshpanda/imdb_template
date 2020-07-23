@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
 
   def index
     @q = Movie.ransack(params[:q])
-    @movies = @q.result(distinct: true).includes(:roles, :lead_roles, :director, :cast).page(params[:page]).per(10)
+    @movies = @q.result(distinct: true).includes(:roles, :lead_roles, :cast).page(params[:page]).per(10)
   end
 
   def show
@@ -20,12 +20,7 @@ class MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
 
     if @movie.save
-      message = "Movie was successfully created."
-      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referer, notice: message
-      else
-        redirect_to @movie, notice: message
-      end
+      redirect_to @movie, notice: "Movie was successfully created."
     else
       render :new
     end
@@ -41,12 +36,7 @@ class MoviesController < ApplicationController
 
   def destroy
     @movie.destroy
-    message = "Movie was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referer, notice: message
-    else
-      redirect_to movies_url, notice: message
-    end
+    redirect_to movies_url, notice: "Movie was successfully destroyed."
   end
 
   private
@@ -56,6 +46,6 @@ class MoviesController < ApplicationController
   end
 
   def movie_params
-    params.require(:movie).permit(:title, :year, :duration, :description, :image, :director_id)
+    params.require(:movie).permit(:title, :year, :duration, :description, :director_id)
   end
 end
