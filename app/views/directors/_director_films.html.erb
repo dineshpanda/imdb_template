@@ -1,14 +1,14 @@
 <div class="card">
   <div class="card-header d-flex align-items-center justify-content-between">
-    Filmography
+    Films
 
-    <a data-toggle="collapse" href="#director_filmography_new_form">
+    <a data-toggle="collapse" href="#director_films_new_form">
       Add movie
     </a>
   </div>
 
   <ul class="list-group list-group-flush">
-    <% @director.filmography.each do |movie| %>
+    <% @director.films.each do |movie| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
         <%= link_to movie.title, movie_path(movie) %>
 
@@ -16,8 +16,8 @@
     <% end %>
 
     <div class="card-footer">
-      <div class="collapse" id="director_filmography_new_form">
-        <%= render partial: "directors/director_filmography_new_form" %>
+      <div class="collapse" id="director_films_new_form">
+        <%= render partial: "directors/director_films_new_form" %>
       </div>
     </div>
 
